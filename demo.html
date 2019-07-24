@@ -14,17 +14,26 @@
 	<script>
 		var output = $("#wk-output");
 		$("#wk-demo-input").on("change", function() {
-			getDictionaryInfo($(this).val(), "English", function(data) {
+			getDictionaryInfo($(this).val(), "French", function(data) {
 				output.html("");
-				
+
 				if(!data.definitions) {
 					output.html("<p>Word not found.</p>");
 				}
-				
+
 				$("<h1>").appendTo(output).text(data.title);
 
 				for (var i = 0; i < data.definitions.length; i++) {
 					$("<p>").text(data.definitions[i].type + ": " + data.definitions[i].meaning).appendTo(output);
+				}
+
+				$("<h1>").appendTo(output).text('Synonyms');
+				for (var i = 0; i < data.synonyms.length; i++) {
+					$("<strong>").text("- "+data.synonyms[i].sense).appendTo(output);
+					$("<p>").text(data.synonyms[i].type + ": " + data.synonyms[i].words.join(', ')).appendTo(output);
+				}
+				if (data.synonymWithoutSense.length) {
+					$("<p>").text(data.synonymWithoutSense.join(', ')).appendTo(output);
 				}
 			});
 		});

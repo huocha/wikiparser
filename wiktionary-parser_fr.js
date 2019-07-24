@@ -1,5 +1,5 @@
 function getDictionaryInfo(word, wordLanguage, callback) {
-	$.getJSON("https://en.wiktionary.org/w/api.php?format=json&action=query&titles={word}&rvprop=content&prop=revisions&redirects=1&callback=?".replace("{word}", word), function (data) {
+	$.getJSON("https://fr.wiktionary.org/w/api.php?format=json&action=query&titles={word}&rvprop=content&prop=revisions&redirects=1&callback=?".replace("{word}", word), function (data) {
 
 		var results = {
 			title: "",
@@ -101,7 +101,7 @@ function getDictionaryInfo(word, wordLanguage, callback) {
 					results.translations.push(translate)
 			}
 
-			if (line.indexOf("* ") == 0 && (heading3 === "Synonyms" || heading4 === "Synonyms")) {
+			if (line.indexOf("*") == 0 && (heading3 === "Synonyms" || heading4 === "Synonyms")) {
 				console.log({ heading1, heading2, heading3 })
 				const type = heading3 === "Synonyms" ? heading2 : heading3;
 				let synonym = {};
