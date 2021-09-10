@@ -1,7 +1,7 @@
 #Wiktionary-parser
 ##retrieving data from wiktionary in javascript
 
-See the [demo](http://palmeral.github.io/wiktionary-parser/demo.html).
+See the [demo](j-nguyenn.github.io/wikiparser/).
 
 ###How to use
 
